@@ -17,17 +17,20 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
 int main(int argc, char *argv[]){
 
 int window;
+char *s;
 
 if(argc > 1){
     window = atoi( argv[1] );}
 
-gen_rand(window);
+init_rand();
+gen_rand(window, s);
 
 return 0;
 }

@@ -11,6 +11,11 @@
 #ifndef MONKEY_H
 #define MONKEY_H
 
-double gen_rand(int window);
+#include <cstring>
+
+using namespace std;
+
+void init_rand();
+void gen_rand(int window, char *s);
 
 #endif

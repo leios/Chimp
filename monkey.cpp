@@ -8,13 +8,30 @@
 *
 *-----------------------------------------------------------------------------*/
 
-#include<iostream>
-#include<ctime>
-#include<cstdlib>
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <cstring>
 
 using namespace std;
 
-double gen_rand(int window){
-srand((unsigned)time(0));
+void init_rand(){srand((unsigned)time(0));}
+/*
+void gen_rand(int window){
 for(unsigned i=0; i<window; ++i){
 cout << rand() << endl;}}
+*/
+
+void gen_rand(int window, char *s){
+    const char alphabet[] =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+    
+    for(int i=0; i < window; i++){
+        s[i] =  alphabet[rand() % (sizeof(alphabet) -1)];}
+
+    s[window] = 0;
+    cout << s << endl;
+}
+
+    
