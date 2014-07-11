@@ -14,13 +14,7 @@
 
 using namespace std;
 
-int main(){
-
+double gen_rand(int window){
 srand((unsigned)time(0));
-for(unsigned i=0; i<3; ++i){
-cout << rand() << endl;
-}
-cout << endl;
-return EXIT_SUCCESS;
-
-}
+for(unsigned i=0; i<window; ++i){
+cout << rand() << endl;}}

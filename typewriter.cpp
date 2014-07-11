@@ -11,30 +11,23 @@
 * 
 * Peace out!
 *-----------------------------------------------------------------------------*/
-#include<iostream>
-#include<vector>
-#include<fstream>
-#include<cstdlib>
+
+#include "monkey.h"
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
-int main()
-{
-  double x_rand;
-  int bin_size, i, count;
-  ifstream input("wordsEn.txt");
-  vector<string> words;
-  string inword;
-  while (std::getline(input,inword))
-  {
-      words.push_back(inword);
-  }
+int main(int argc, char *argv[]){
 
-  for (int i = 0; i<=10 ; i++)
-  {
-    int num = rand() % words.size();  
-    if (num<words.size()){
-     std::cout << words[num] << endl;
-  }
-} 
+int window;
+
+if(argc > 1){
+    window = atoi( argv[1] );}
+
+gen_rand(window);
+
+return 0;
 }
