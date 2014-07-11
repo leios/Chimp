@@ -30,5 +30,7 @@ classes, or else use a multidimensional file format... I don't know.
 -I need to add in a function that identifies the words once they are written
 by chimp. This will be the primary purpose of the dictionary file.
 
+-files to add: dictionary.cpp, dictionary.dat
+
 -That's all for now, I think. Toodles!
 

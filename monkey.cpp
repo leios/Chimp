@@ -16,11 +16,6 @@
 using namespace std;
 
 void init_rand(){srand((unsigned)time(0));}
-/*
-void gen_rand(int window){
-for(unsigned i=0; i<window; ++i){
-cout << rand() << endl;}}
-*/
 
 void gen_rand(int window, char *s){
     const char alphabet[] =
