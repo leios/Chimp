@@ -7,3 +7,12 @@
 * 
 * Peace out!
 *-----------------------------------------------------------------------------*/
+
+#ifndef DICTIONARY_H
+#define DICTIONARY_H
+
+#include <cstring>
+
+void read_dict(int window, vector<string> possibilities, int i);
+
+#endif

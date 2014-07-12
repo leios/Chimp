@@ -12,12 +12,12 @@
 * Peace out!
 *-----------------------------------------------------------------------------*/
 
+#include "dictionary.h"
 #include "monkey.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
 #include <cstdlib>
-#include <cstring>
 
 using namespace std;
 
