@@ -11,8 +11,13 @@
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
-#include <cstring>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 void read_dict(int window, vector<string> possibilities, int i);
+void scan_possibilities(vector<string> possibilities, string chimp_word, int i);
+void window_check(int window);
 
 #endif

@@ -26,10 +26,13 @@ int main(int argc, char *argv[]){
 int window;
 char *s;
 
+/*
 if(argc > 1){
     window = atoi( argv[1] );}
+*/
 
 init_rand();
+window_check(window);
 gen_rand(window, s);
 
 return 0;

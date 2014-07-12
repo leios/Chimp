@@ -10,15 +10,16 @@
 *
 *-----------------------------------------------------------------------------*/
 
-
 #include "dictionary.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
-void read_dict(int window, vector<string> possibilities, int i){
+void read_dict(int window, vector<string> possibilities){
+    int i = 0;
     ifstream dictionary;
     dictionary.open("dictionary.dat");
     while(i != dictionary.eof()){
@@ -26,10 +27,26 @@ void read_dict(int window, vector<string> possibilities, int i){
         getline(dictionary,words);
         if (words.size() <= window){
             possibilities.push_back(words);}}
+    dictionary.close();
 }
             
-        
-//void window_check(int window, char *s){
-    
+void scan_possibilities(vector<string> possibilities, string chimp_word){
+    int i = 0;
+    for(i; i<possibilities.size(); i++){
+        if (possibilities[i] == chimp_word){
+            cout << chimp_word << endl;}
+    }
+} 
 
-
+void window_check(int window){
+    window = 0;
+    int i = 0;
+    string word;
+    ifstream dictionary;
+    dictionary.open("dictionary.dat");
+    cout << "sifting through dictionary" <<  endl;
+    while(getline(dictionary, word, '\n')){
+        if(word.size() > window){window = word.size();};
+    }
+dictionary.close();
+cout << window << endl;}
