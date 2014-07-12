@@ -22,6 +22,8 @@ void read_dict(int window, vector<string> possibilities){
     int i = 0;
     ifstream dictionary;
     dictionary.open("dictionary.dat");
+    if (!dictionary){
+        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;}
     while(i != dictionary.eof()){
         std::string words;
         getline(dictionary,words);
@@ -44,6 +46,8 @@ void window_check(int window){
     string word;
     ifstream dictionary;
     dictionary.open("dictionary.dat");
+    if (!dictionary){
+        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;}
     cout << "sifting through dictionary" <<  endl;
     while(getline(dictionary, word, '\n')){
         if(word.size() > window){window = word.size();};
