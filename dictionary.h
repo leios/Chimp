@@ -18,6 +18,7 @@ using namespace std;
 
 void read_dict(int window, vector<string> possibilities, int i);
 void scan_possibilities(vector<string> possibilities, string chimp_word, int i);
-void window_check(int window);
+int window_check(int window);
+string dict_check(string str);
 
 #endif

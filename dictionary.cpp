@@ -23,7 +23,7 @@ void read_dict(int window, vector<string> possibilities){
     ifstream dictionary;
     dictionary.open("dictionary.dat");
     if (!dictionary){
-        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;}
+        cout << "download dictionary from here: http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt." << endl << "save as dictionary.dat." << endl;}
     while(i != dictionary.eof()){
         std::string words;
         getline(dictionary,words);
@@ -40,7 +40,7 @@ void scan_possibilities(vector<string> possibilities, string chimp_word){
     }
 } 
 
-void window_check(int window){
+int window_check(int window){
     window = 0;
     int i = 0;
     string word;
@@ -53,4 +53,18 @@ void window_check(int window){
         if(word.size() > window){window = word.size();};
     }
 dictionary.close();
-cout << window << endl;}
+cout << window << endl;
+return window;}
+
+string dict_check(string str){
+    int i = 0;
+    ifstream dictionary;
+    dictionary.open("dictionary.dat");
+    if (!dictionary){
+        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;}
+    while(i != dictionary.eof()){
+        std::string words;
+        getline(dictionary,words);
+        if(words == str){cout << str << endl; break;}
+        else{continue;}}}
+

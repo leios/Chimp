@@ -11,7 +11,7 @@
 #ifndef MONKEY_H
 #define MONKEY_H
 
-#include <cstring>
+#include <string>
 
 using namespace std;
 
