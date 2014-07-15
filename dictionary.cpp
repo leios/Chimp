@@ -65,6 +65,6 @@ string dict_check(string str){
     while(i != dictionary.eof()){
         std::string words;
         getline(dictionary,words);
-        if(words == str){cout << str << endl; break;}
-        else{continue;}}}
+        if(words == str){cout << str << endl;}
+        else{return str;}}}
 

@@ -36,5 +36,5 @@ window = window_check(window);
 cout << window << endl;
 gen_rand(window, s);
 
-//return 0;
+return 0;
 }

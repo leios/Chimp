@@ -24,16 +24,16 @@ void gen_rand(int window, char *s){
         "abcdefghijklmnopqrstuvwxyz";
     string check, test;
     char ch;
-/*    
+    
     for(int i=0; i < window; i++){
         s[i] =  alphabet[rand() % (sizeof(alphabet) -1)];}
 
     s[window] = 0;
     cout << s << endl;
-*/
+/*
 //I need to pull s[i's] into strings and chack against the dictionary.
 //and then move the window forward if it exceeds it's limit
-    for(int i = 0; i < window; i++){
+    for(int i = 0; i < 1000; i++){
     s[i] =  alphabet[rand() % (sizeof(alphabet) -1)];
     test = s[i];
     check.append(test);
@@ -41,6 +41,7 @@ void gen_rand(int window, char *s){
     if(check.size() == window){
         check.erase(1,1);}
     }
+*/
         
 }
 
