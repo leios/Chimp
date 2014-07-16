@@ -16,6 +16,6 @@
 using namespace std;
 
 void init_rand();
-void gen_rand(int window, char *s);
+void gen_rand(int window, string wword);
 
 #endif

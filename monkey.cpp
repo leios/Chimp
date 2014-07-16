@@ -18,30 +18,29 @@ using namespace std;
 
 void init_rand(){srand((unsigned)time(0));}
 
-void gen_rand(int window, char *s){
+void gen_rand(int window, string wword){
     const char alphabet[] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         "abcdefghijklmnopqrstuvwxyz";
     string check, test;
-    char ch;
-    
+/*    
     for(int i=0; i < window; i++){
         s[i] =  alphabet[rand() % (sizeof(alphabet) -1)];}
 
     s[window] = 0;
     cout << s << endl;
-/*
+*/
 //I need to pull s[i's] into strings and chack against the dictionary.
 //and then move the window forward if it exceeds it's limit
     for(int i = 0; i < 1000; i++){
-    s[i] =  alphabet[rand() % (sizeof(alphabet) -1)];
-    test = s[i];
-    check.append(test);
+    wword = alphabet[rand() % (sizeof(alphabet) -1)];
+    cout << wword;
+    check.append(wword);
     dict_check(check);    
     if(check.size() == window){
         check.erase(1,1);}
     }
-*/
+
         
 }
 

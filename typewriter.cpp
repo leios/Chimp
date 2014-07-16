@@ -24,7 +24,7 @@ using namespace std;
 int main(int argc, char *argv[]){
 
 int window;
-char *s;
+string wword;
 
 /*
 if(argc > 1){
@@ -34,7 +34,7 @@ if(argc > 1){
 init_rand();
 window = window_check(window);
 cout << window << endl;
-gen_rand(window, s);
+gen_rand(window, wword);
 
 return 0;
 }
