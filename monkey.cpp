@@ -20,7 +20,7 @@ void init_rand(){srand((unsigned)time(0));}
 
 void gen_rand(int window, string wword){
     const char alphabet[] =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         "abcdefghijklmnopqrstuvwxyz";
     string check, test;
 /*    
@@ -32,13 +32,13 @@ void gen_rand(int window, string wword){
 */
 //I need to pull s[i's] into strings and chack against the dictionary.
 //and then move the window forward if it exceeds it's limit
-    for(int i = 0; i < 1000; i++){
+    for(int i = 0; i < 10000; i++){
     wword = alphabet[rand() % (sizeof(alphabet) -1)];
-    cout << wword;
     check.append(wword);
     dict_check(check);    
     if(check.size() == window){
-        check.erase(1,1);}
+        check.erase(0,1);}
+        cout << check << endl;
     }
 
         
