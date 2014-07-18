@@ -32,7 +32,7 @@ void gen_rand(int window, string wword){
 */
 //I need to pull s[i's] into strings and chack against the dictionary.
 //and then move the window forward if it exceeds it's limit
-    for(int i = 0; i < 10000; i++){
+    for(int i = 0; i < 1000; i++){
     wword = alphabet[rand() % (sizeof(alphabet) -1)];
     check.append(wword);
     dict_check(check);    
