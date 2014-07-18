@@ -36,9 +36,9 @@ void gen_rand(int window, string wword){
     wword = alphabet[rand() % (sizeof(alphabet) -1)];
     check.append(wword);
     dict_check(check);    
+//    cout << check << endl;
     if(check.size() == window){
         check.erase(0,1);}
-        cout << check << endl;
     }
 
         

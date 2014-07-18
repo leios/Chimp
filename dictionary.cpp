@@ -58,39 +58,17 @@ return window;}
 
 string dict_check(string str){
     string words, tmpstr = str;
-    int i = 0;
+    int i = 0, length = tmpstr.size();
     ifstream dictionary;
     dictionary.open("dictionary.dat");
     if (!dictionary){
-        cout << "download dictionary from here: 'http://www-01.sil.org/linguisti
-cs/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat
-.'" << endl;} 
+        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;}
     while(dictionary >> words){
         str = tmpstr;
-        for(int i = 0; i < str.size(); i++){
-            if(words == str){cout << str << endl; break;}
+        for(int i = 0; i < length; i++){
+            if(words == str){cout << str << endl;}
             else{
-                str.erase(str.size(),1);
+                str.erase(str.size() - 1,1);
 //                cout << str << endl;
                 continue;}}}
 }
-
-/*
-string dict_check(string str){
-    cout << "dict_check" << endl;
-    int i = 0;
-    ifstream dictionary;
-    dictionary.open("dictionary.dat");
-    if (!dictionary){
-        cout << "download dictionary from here: 'http://www-01.sil.org/linguistics/wordlists/english/wordlist/wordsEn.txt.'" << endl << "save as 'dictionary.dat.'" << endl;} 
-    while(i != dictionary.eof()){
-        std::string words;
-        getline(dictionary,words);
-        cout << words << endl;
-        for(int i = 0; i < str.size(); i++){
-            if(words == str){cout << str << endl; break;}
-            else{
-                str.erase(str.size() - 1,1);
-                cout << str << endl;
-                continue;}}}
-}*/
