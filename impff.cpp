@@ -10,10 +10,45 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
 
 using namespace std;
 
-void impwrite(
+vector<string> read_file(const char* filepath){
+    vector<string> line_comp;
+    string lines;
+    ifstream impfile;
+    impfile.open(filepath);
+    if (!impfile){
+        cout << "incorrect filepath. Please input the appropriate imp file." 
+        << endl;
+    }
+
+    while(impfile >> lines){
+        line_comp.push_back(lines);
+    }
+
+    return line_comp;
+    impfile.close();
+}
 
 
-void impread(
+void call_space(){
+}
+
+
+void read_headers(){
+}
+
+
+void locate_header(){
+}
+
+
+void impwrite(){
+}
+
+
+void impread(){
+}
