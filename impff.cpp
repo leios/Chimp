@@ -35,10 +35,6 @@ vector<string> read_file(const char* filepath){
 }
 
 
-void call_space(){
-}
-
-
 vector<string> read_headers(vector<string> line_comp){
     vector<string> headers;
     vector<int> spacing;
@@ -59,10 +55,6 @@ vector<string> read_headers(vector<string> line_comp){
     headers.push_back(head);}
     cout << endl;
     return headers;
-}
-
-
-void locate_header(){
 }
 
 

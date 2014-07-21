@@ -17,9 +17,7 @@
 using namespace std;
 
 vector<string> read_file(const char* filepath);
-void call_space();
 vector<string> read_headers(vector<string> line_comp);
-void locate_header();
 void impwrite();
 void impread();
 
