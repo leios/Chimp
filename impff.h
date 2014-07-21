@@ -13,7 +13,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include "strtk/strtk.hpp"
 
 using namespace std;
 

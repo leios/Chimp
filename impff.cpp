@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <sstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -41,13 +41,23 @@ void call_space(){
 
 vector<string> read_headers(vector<string> line_comp){
     vector<string> headers;
-    string line;
-    stringstream head(line_comp[0]);
-    while( head >> line){
-        headers.push_back(line);
-        if(head.peek() == ','){
-            head.ignore();}
-    }
+    vector<int> spacing;
+    string space = line_comp[0].substr(line_comp[0].find('#')+2, 1), head;
+    int i = atoi(space.c_str());
+    spacing.push_back(0);
+    spacing.push_back(i);
+    while (i < line_comp.size()){
+        space = line_comp[i].substr(line_comp[i].find('#')+2, 1);
+        i = i + atoi(space.c_str());
+        spacing.push_back(i);}
+    cout << "The following is the spacing between each heading:" << endl;
+    for ( int j = 0; j < spacing.size() - 1; j++){
+    cout << spacing[j] << ", ";
+    head = line_comp[spacing[j]].substr(
+        line_comp[spacing[j]].find('#')+4,
+        line_comp[spacing[j]].size() - line_comp[spacing[j]].find('#')+4);
+    headers.push_back(head);}
+    cout << endl;
     return headers;
 }
 
