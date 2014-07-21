@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -38,7 +39,16 @@ void call_space(){
 }
 
 
-void read_headers(){
+vector<string> read_headers(vector<string> line_comp){
+    vector<string> headers;
+    string line;
+    stringstream head(line_comp[0]);
+    while( head >> line){
+        headers.push_back(line);
+        if(head.peek() == ','){
+            head.ignore();}
+    }
+    return headers;
 }
 
 
