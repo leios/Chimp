@@ -1,14 +1,13 @@
-#,5 // # of species + 1
+#,5,heading // # of species + 1
 -this space can be used for anything. It is a heading and will be ignored
 -the impff (infinite monkey poet file format) holds data horizontally and 
 vertically with a header spaced at every multiple of the number in the
 initial header.
-#,data_heading
+#,4,data_heading
 species1,species1,species1...
 species2,species2,species2...
 species3,species3,species3...
-species4,species4,species4...
-#, Example
+#,5,Example
 a list of all 1-syllable rhymes with the rest of the block
 a list of all 2-syllable rhymes with the rest of the block
 ...
