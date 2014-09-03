@@ -58,7 +58,8 @@ vector<string> read_headers(vector<string> line_comp){
 }
 
 
-void impwrite(string word, int syllables, int type, string rhyme){
+void impwrite(string word, int syllables, int type, string rhyme, 
+              vector<string> line_comp, vector<string> headers){
     
 }
 
