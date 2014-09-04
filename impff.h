@@ -17,6 +17,7 @@
 using namespace std;
 
 vector<string> read_file(const char* filepath);
+vector<int> find_spacing(vector<string> line_comp);
 vector<string> read_headers(vector<string> line_comp);
 void impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers);
