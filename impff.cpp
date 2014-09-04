@@ -16,6 +16,7 @@
 
 using namespace std;
 
+// This funtion simply reads the dictionary into a vector
 vector<string> read_file(const char* filepath){
     vector<string> line_comp;
     string lines;
@@ -34,6 +35,7 @@ vector<string> read_file(const char* filepath){
     impfile.close();
 }
 
+// This function finds the spacing between each section of the dictionary
 vector<int> find_spacing(vector<string> line_comp){
     vector<int> line_spacing;
     string space = line_comp[0].substr(line_comp[0].find('#')+2, 1);
@@ -47,6 +49,7 @@ vector<int> find_spacing(vector<string> line_comp){
     return line_spacing;
 }
 
+// This function finds the headers of each section
 vector<string> read_headers(vector<string> line_comp){
     vector<string> headers;
     vector<int> spacing;
@@ -62,7 +65,8 @@ vector<string> read_headers(vector<string> line_comp){
     return headers;
 }
 
-
+// This function writes the appropriate word in the appropriate section
+// When given the header. This is still a work in progress.
 void impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers){
     
