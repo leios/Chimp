@@ -7,31 +7,10 @@
 *
 *-----------------------------------------------------------------------------*/
 
--I just generated a set of files that creates what seems to be random-ish 
-characters. This is fine. I have yet decided whether I like the capitals in
-there or not. The end-goal is to have chimp sift through the letters and spit
-out any words that seem to match.
+-I need to finish the impwrite / impremove command
 
--I need to figure out a way to have the window move with the characters 
-generated. We will set a max length and a time that we want the simulation to 
-run, and the chimp will continually produce new letters within that window size.
+-I need to create the pentameter / rhyming scheme
+--Remember that this scheme should be able to take in "ababc" and rhyme it 
+  appropriately. This means that I need to be READING IN the scheme!
 
--In the future, the window size will be determined by the dictionary
-
--Speaking of dictionaries, I've also gotta add in a mode that reads only words,
-not letters at all.
-
--I also have to add in punctuation eventually.
-
--I have yet to determine the best way to store the words. They have to be 
-easily accesible by both syllable and rhyme. I think I might create a bunch of
-classes, or else use a multidimensional file format... I don't know.
-
--I need to add in a function that identifies the words once they are written
-by chimp. This will be the primary purpose of the dictionary file.
-
--files to add: dictionary.cpp, dictionary.dat
-
--That's all for now, I think. Toodles!
-
--I think I will look into multidimensional file formats like H5 or FITS.
+-I need to start working on punctuation
