@@ -82,9 +82,17 @@ void impwrite(string word, int syllables, int type, string rhyme,
     
     // Now we need to go into the heading by using the syllables to navigate 
     // down to the appropriate space. If the space is not created yet, 
-    // we need to creat it! 
-    //if (dictionary_num + syllables > 
-    //    line_comp[dictionary_num].find('#') + 2
+    // we need to create it! 
+
+    space = line_comp[i].substr(line_comp[dictionary_num].find('#')+2, 1);
+    j = atoi(space.c_str());
+    if (syllables > j){
+        cout << "use the vector insert command to make new lines!" << endl;
+    }
+    else{
+        continue;
+    }
+      
 }
 
 
