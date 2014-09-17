@@ -68,8 +68,16 @@ vector<string> read_headers(vector<string> line_comp){
 // This function writes the appropriate word in the appropriate section
 // When given the header. This is still a work in progress.
 void impwrite(string word, int syllables, int type, string rhyme, 
-              vector<string> line_comp, vector<string> headers){
-    
+              vector<string> line_comp, vector<string> headers,
+              vector<int> line_spacing){
+    int header_num, dictionary_num;
+    for (int i = 0; i < headers.size(); i++){
+        if rhyme == headers[i]{
+            header_num = i;
+            break;
+        }
+    }
+    dictionary_num = line_spacing[header_num];
 }
 
 
