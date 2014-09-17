@@ -70,14 +70,21 @@ vector<string> read_headers(vector<string> line_comp){
 void impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing){
+    // First, we need to find which heading in the dictionary we are under
     int header_num, dictionary_num;
     for (int i = 0; i < headers.size(); i++){
-        if rhyme == headers[i]{
+        if (rhyme == headers[i]){
             header_num = i;
             break;
         }
     }
     dictionary_num = line_spacing[header_num];
+    
+    // Now we need to go into the heading by using the syllables to navigate 
+    // down to the appropriate space. If the space is not created yet, 
+    // we need to creat it! 
+    //if (dictionary_num + syllables > 
+    //    line_comp[dictionary_num].find('#') + 2
 }
 
 
