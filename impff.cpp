@@ -92,6 +92,11 @@ void impwrite(string word, int syllables, int type, string rhyme,
     else{
         continue;
     }
+
+    // Now we need to locate the end of the line and add a comma, followed by
+    // the word we are adding and a number for it's type of speech.
+    // I think we should start writing the code for the numbers and letters in
+    // the first heading.
       
 }
 
