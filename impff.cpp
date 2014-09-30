@@ -72,6 +72,11 @@ void impwrite(string word, int syllables, int type, string rhyme,
               vector<int> line_spacing){
     // First, we need to find which heading in the dictionary we are under
     int header_num, dictionary_num;
+
+    // Note: Not used to vector.insert command. I am sure there is a more
+    // efficient way of doing this
+    vector<int>::iterator iter8 = line_comp.begin();
+
     for (int i = 0; i < headers.size(); i++){
         if (rhyme == headers[i]){
             header_num = i;
@@ -84,10 +89,15 @@ void impwrite(string word, int syllables, int type, string rhyme,
     // down to the appropriate space. If the space is not created yet, 
     // we need to create it! 
 
-    space = line_comp[i].substr(line_comp[dictionary_num].find('#')+2, 1);
+    space = line_comp[dictionary_num]
+            .substr(line_comp[dictionary_num].find('#')+2, 1);
+
     j = atoi(space.c_str());
     if (syllables > j){
-        cout << "use the vector insert command to make new lines!" << endl;
+        // Use vector.insert to insert a line at the appropriate position
+        line_comp.insert(iter8 + i, syllables - j, "/n")
+
+        // Don't forget to change j!
     }
     else{
         continue;
