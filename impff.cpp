@@ -95,12 +95,15 @@ void impwrite(string word, int syllables, int type, string rhyme,
     j = atoi(space.c_str());
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
-        line_comp.insert(iter8 + i, syllables - j, "/n")
+        line_comp.insert(iter8 + dictionary_num, syllables - j, "/n")
 
         // Don't forget to change j!
+        // I think I might have miscounted with the inserts below. Check!
         string line = line_comp[dictionary_num];
-        line.erase(line.find('#')+2,1);
-        line.insert(line.find('#')+2,syllables);
+        line.erase(line.find('#')+2, 1);
+        line.insert(line.find('#')+2, syllables);
+        line_comp.erase(iter8 + dictionary_num); 
+        line_comp.insert(iter8 + dictionary_num, line);
     }
     else{
         continue;
@@ -110,6 +113,19 @@ void impwrite(string word, int syllables, int type, string rhyme,
     // the word we are adding and a number for it's type of speech.
     // I think we should start writing the code for the numbers and letters in
     // the first heading.
+    string line = line_comp[dictionary_num + syllables];
+    int test = line.find_last_of(',');
+    if (test < 0){
+        line.append(word);
+    }
+    else{
+        line.append(', ' word); 
+    }
+
+    // Now to add it back to the line composition!
+    line_comp.erase(iter8 + dictionary_num + syllables);
+    line_comp.insert(iter8 + dictionary_num + syllables, line);
+    
       
 }
 
