@@ -98,6 +98,9 @@ void impwrite(string word, int syllables, int type, string rhyme,
         line_comp.insert(iter8 + i, syllables - j, "/n")
 
         // Don't forget to change j!
+        string line = line_comp[dictionary_num];
+        line.erase(line.find('#')+2,1);
+        line.insert(line.find('#')+2,syllables);
     }
     else{
         continue;
