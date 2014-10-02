@@ -8,12 +8,18 @@
 *-----------------------------------------------------------------------------*/
 
 -I need to finish the impwrite / impremove command
+--impwrite is almost done, I just need to add in something to write the changes to the dictionary and I should be done. 
+--impremove will be necessary, but I haven't decided whether it will be necessary for this iteration of the code
+--impread will be necessary, but shouldn't be too bad. We just need to output a vector of all possible words for Chimp to sift through while infinite monkey-ing (not a real phrase, but you guys can deal with it!).
+
+-I need to look into binary file formats. I think those will make Chimp much more efficient.
 
 -I need to create the pentameter / rhyming scheme
 --Remember that this scheme should be able to take in "ababc" and rhyme it 
   appropriately. This means that I need to be READING IN the scheme!
 
 -I need to start working on punctuation
+--This should be done outside of the impff, in case someone wants to use impff for something else later on. I don't know what.
 
 -Also: I have not decided whether I want some people who may or may not be 
  coming in from youtube to work on this or not.

@@ -126,9 +126,15 @@ void impwrite(string word, int syllables, int type, string rhyme,
     line_comp.erase(iter8 + dictionary_num + syllables);
     line_comp.insert(iter8 + dictionary_num + syllables, line);
     
+    // Now we need to write the new contents of line_comp to a file...
+    // I think we have dome this before, so let's scrounge something up!
       
 }
 
 
+// Note: There is / was a "dictionary" reading option. impread will
+// replace this function. Also: the purpose of impread is to find a full list of
+// possible words for Chimp to pull from when randomly generating letters or 
+// words. The output should be a vector or array of the appropriate length.
 void impread(){
 }
