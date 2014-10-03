@@ -126,8 +126,17 @@ void impwrite(string word, int syllables, int type, string rhyme,
     line_comp.erase(iter8 + dictionary_num + syllables);
     line_comp.insert(iter8 + dictionary_num + syllables, line);
     
+    // let's just return the vector for now.
+    return line_comp
+}
+
+
+// This function records line_comp into a new file. I decided to separate this
+// from impwrite. I might combine them later.    
+void imprecord(line_comp, dic_path){
     // Now we need to write the new contents of line_comp to a file...
     // I think we have dome this before, so let's scrounge something up!
+    
       
 }
 

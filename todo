@@ -9,6 +9,7 @@
 
 -I need to finish the impwrite / impremove command
 --impwrite is almost done, I just need to add in something to write the changes to the dictionary and I should be done. 
+--NOTE: impwrite need to have a section to add a new header if that header is not present yet.
 --impremove will be necessary, but I haven't decided whether it will be necessary for this iteration of the code
 --impread will be necessary, but shouldn't be too bad. We just need to output a vector of all possible words for Chimp to sift through while infinite monkey-ing (not a real phrase, but you guys can deal with it!).
 
