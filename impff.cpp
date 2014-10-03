@@ -70,17 +70,27 @@ vector<string> read_headers(vector<string> line_comp){
 void impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing){
+
     // First, we need to find which heading in the dictionary we are under
     int header_num, dictionary_num;
 
     // Note: Not used to vector.insert command. I am sure there is a more
     // efficient way of doing this
     vector<int>::iterator iter8 = line_comp.begin();
-
-    for (int i = 0; i < headers.size(); i++){
+    for (int i = 0; i <= headers.size(); i++){
         if (rhyme == headers[i]){
             header_num = i;
             break;
+        }
+ 
+        // Now let's add new headers if the rhyme has never been seen before
+        if (i == headers.size()){
+            string new_head = "#," + syllables + "," + rhyme;
+            headers.append(rhyme);
+            line_comp.append(new_head);
+            for (int j = 0; j < syllables; j++){
+                line_comp.append("\n");
+            }
         }
     }
     dictionary_num = line_spacing[header_num];
@@ -95,7 +105,7 @@ void impwrite(string word, int syllables, int type, string rhyme,
     j = atoi(space.c_str());
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
-        line_comp.insert(iter8 + dictionary_num, syllables - j, "/n")
+        line_comp.insert(iter8 + dictionary_num, syllables - j, "\n")
 
         // Don't forget to change j!
         // I think I might have miscounted with the inserts below. Check!

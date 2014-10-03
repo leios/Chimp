@@ -9,9 +9,12 @@
 
 -I need to finish the impwrite / impremove command
 --impwrite is almost done, I just need to add in something to write the changes to the dictionary and I should be done. 
---NOTE: impwrite need to have a section to add a new header if that header is not present yet.
 --impremove will be necessary, but I haven't decided whether it will be necessary for this iteration of the code
 --impread will be necessary, but shouldn't be too bad. We just need to output a vector of all possible words for Chimp to sift through while infinite monkey-ing (not a real phrase, but you guys can deal with it!).
+
+-I need to add in a few more functions:
+--impremove_header (removes entire header)
+--imptransfer (transfers rhymes from one header to another)
 
 -I need to look into binary file formats. I think those will make Chimp much more efficient.
 
@@ -26,3 +29,5 @@
  coming in from youtube to work on this or not.
 
 -Note: I need to get better at writing these todo lists. If anyone is reading this or has cloned the repo, talk to me! I wanna know what you want to do!
+
+-maybe make a dynamic prompt that allows manipulation of these files with just an "imp" or "impff" command. I dunno. Working on it!
