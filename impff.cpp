@@ -158,6 +158,21 @@ void imprecord(vector<int> line_comp, const char* dic_path){
 }
 
 
+// If you end up making a mistake and need to remove a header
+vector<string> impremove_header(string rhyme, vector<string> line_comp){
+
+return line_comp;
+}
+
+
+// If you need to transfer the contents of one header to another
+vector<string> imptransfer(string rhyme1, string rhyme2,
+                           vector<string> line_comp, 
+                           vector<string> headers, vector<int> line_spacing){
+
+return line_comp;
+}
+
 // Note: There is / was a "dictionary" reading option. impread will
 // replace this function. Also: the purpose of impread is to find a full list of
 // possible words for Chimp to pull from when randomly generating letters or 
