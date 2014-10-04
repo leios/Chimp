@@ -16,7 +16,7 @@
 
 using namespace std;
 
-vector<string> read_file(const char* filepath);
+vector<string> read_file(const char* dic_path);
 
 vector<int> find_spacing(vector<string> line_comp);
 
@@ -26,7 +26,7 @@ void impwrite(string word, int syllables, int type, string rhyme,
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing);
 
-void imprecord(line_comp, dic_path);
+void imprecord(vector<string>line_comp, const char* dic_path);
 
 void impread();
 

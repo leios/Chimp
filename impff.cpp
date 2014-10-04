@@ -13,15 +13,16 @@
 #include <vector>
 #include <fstream>
 #include <stdlib.h>
+#include <iterator>
 
 using namespace std;
 
 // This funtion simply reads the dictionary into a vector
-vector<string> read_file(const char* filepath){
+vector<string> read_file(const char* dic_path){
     vector<string> line_comp;
     string lines;
     ifstream impfile;
-    impfile.open(filepath);
+    impfile.open(dic_path);
     if (!impfile){
         cout << "incorrect filepath. Please input the appropriate imp file." 
         << endl;
@@ -86,10 +87,10 @@ void impwrite(string word, int syllables, int type, string rhyme,
         // Now let's add new headers if the rhyme has never been seen before
         if (i == headers.size()){
             string new_head = "#," + syllables + "," + rhyme;
-            headers.append(rhyme);
-            line_comp.append(new_head);
+            headers.push_back(rhyme);
+            line_comp.push_back(new_head);
             for (int j = 0; j < syllables; j++){
-                line_comp.append("\n");
+                line_comp.push_back("\n");
             }
         }
     }
@@ -143,10 +144,16 @@ void impwrite(string word, int syllables, int type, string rhyme,
 
 // This function records line_comp into a new file. I decided to separate this
 // from impwrite. I might combine them later.    
-void imprecord(line_comp, dic_path){
+void imprecord(vector<int> line_comp, const char* dic_path){
+
     // Now we need to write the new contents of line_comp to a file...
     // I think we have dome this before, so let's scrounge something up!
-    
+    ofstream dic;
+    dic.open(dic_path);
+
+    // Now let's copy the contents of line_comp to the dic
+    copy(line_comp.begin(), line_comp.end(), 
+         ostream_iterator<string>(dic, "\n"));
       
 }
 
