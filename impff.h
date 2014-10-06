@@ -28,7 +28,9 @@ void impwrite(string word, int syllables, int type, string rhyme,
 
 void imprecord(vector<string>line_comp, const char* dic_path);
 
-vector<string> impremove_header(string rhyme, vector<string> line_comp);
+vector<string> impremove_header(string rhyme, vector<string> line_comp
+                                vector<string> headers, 
+                                vector<int> line_spacing){
 
 vector<string> imptransfer(string rhyme1, string rhyme2,
                            vector<string> line_comp, 

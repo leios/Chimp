@@ -159,7 +159,37 @@ void imprecord(vector<int> line_comp, const char* dic_path){
 
 
 // If you end up making a mistake and need to remove a header
-vector<string> impremove_header(string rhyme, vector<string> line_comp){
+vector<string> impremove_header(string rhyme, vector<string> line_comp
+                                vector<string> headers, 
+                                vector<int> line_spacing){
+
+    // This should be easy. A search and destroy mission.
+    // We find the heading and remove it along with all the lines following
+    // within syllable range.
+    for (int i = 0; i <= headers.size(); i++){
+        if (rhyme == headers[i]){
+            header_num = i;
+            break;
+        }
+
+    line_spacing[header_num] = line_num;
+
+    // find the space each header takes up
+    space = line_comp[line_num]
+            .substr(line_comp[line_num].find('#')+2, 1);
+
+    // I couldn't think of a unique variable name for the number of syllables to
+    // remove... so let's just use "j" for now. Deal with it.
+    j = atoi(space.c_str());
+
+    // Now we just have to remove the appropriate components from the vector
+    // I think I might be off by one. Check this.
+    line_comp.erase(line_comp.begin() + header_num - 1, 
+                    line_comp.begin() + header_num + j - 1);
+
+
+}
+    
 
 return line_comp;
 }
