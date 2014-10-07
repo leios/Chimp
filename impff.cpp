@@ -187,10 +187,6 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp
     line_comp.erase(line_comp.begin() + header_num - 1, 
                     line_comp.begin() + header_num + j - 1);
 
-
-}
-    
-
 return line_comp;
 }
 
@@ -199,6 +195,10 @@ return line_comp;
 vector<string> imptransfer(string rhyme1, string rhyme2,
                            vector<string> line_comp, 
                            vector<string> headers, vector<int> line_spacing){
+
+    // I think the best bet here is to use impwrite to write each syllable line
+    // to the appropriate line in the header we want to transfer to and then 
+    // use impremove to remove the offensive header. 
 
 return line_comp;
 }
