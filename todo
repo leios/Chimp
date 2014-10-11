@@ -7,6 +7,10 @@
 *
 *-----------------------------------------------------------------------------*/
 
+Note: I can use this file format for easy serching in the future if I allow for
+      more than one "type" to be given to each word. I am not qute sure how to
+      do this. That said, I did upload a potential possibility in testdict.imp
+
 -I need to finish the impwrite / impremove command
 --impwrite is almost done, I just need to add in something to write the changes to the dictionary and I should be done. 
 --impremove will be necessary, but I haven't decided whether it will be necessary for this iteration of the code
