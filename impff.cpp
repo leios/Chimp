@@ -68,15 +68,19 @@ vector<string> read_headers(vector<string> line_comp){
 
 // This function writes the appropriate word in the appropriate section
 // When given the header. This is still a work in progress.
+// Note: I may need to rewrite this to search each heder for the rhyming word. 
+//       More than that, I might want to read in words that do not necessarily
+//       have a rhyme (i.e. reading a book).
 void impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing){
 
-    // First, we need to find which heading in the dictionary we are under
+    // First, we need to find which heading in the dictionary the word is under
     int header_num, dictionary_num;
 
     // Note: Not used to vector.insert command. I am sure there is a more
     // efficient way of doing this
+    // Note: the header's vector should be just the rhymes. 
     vector<int>::iterator iter8 = line_comp.begin();
     for (int i = 0; i <= headers.size(); i++){
         if (rhyme == headers[i]){
@@ -86,12 +90,14 @@ void impwrite(string word, int syllables, int type, string rhyme,
  
         // Now let's add new headers if the rhyme has never been seen before
         if (i == headers.size()){
-            string new_head = "#," + syllables + "," + rhyme;
+            string new_head;
+            new_head.append("#," + syllables + "," + rhyme);
             headers.push_back(rhyme);
             line_comp.push_back(new_head);
             for (int j = 0; j < syllables; j++){
                 line_comp.push_back("\n");
             }
+            header_num = headers.size() + 1;
         }
     }
     dictionary_num = line_spacing[header_num];
@@ -100,10 +106,12 @@ void impwrite(string word, int syllables, int type, string rhyme,
     // down to the appropriate space. If the space is not created yet, 
     // we need to create it! 
 
+    // This should find the spacing in the header and set it as "j"
+    // why "j"? Heck if I know, I couldn't think of another variable. 
     space = line_comp[dictionary_num]
             .substr(line_comp[dictionary_num].find('#')+2, 1);
-
     j = atoi(space.c_str());
+
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
         line_comp.insert(iter8 + dictionary_num, syllables - j, "\n")
