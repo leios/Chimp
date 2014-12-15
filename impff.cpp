@@ -36,6 +36,17 @@ vector<string> read_file(const char* dic_path){
     impfile.close();
 }
 
+// This function will write line_comp to your dictionary file
+void write_file(vector<string> line_comp, const char* dic_path){
+    ofstream impfile;
+    impfile.open(dic_path);
+    for (int i = 0; i < line_comp.size(); i++){
+        impfile << line_comp[i] << endl;
+    } 
+
+    impfile.close();
+}
+
 // This function finds the spacing between each section of the dictionary
 vector<int> find_spacing(vector<string> line_comp){
     vector<int> line_spacing;
@@ -116,7 +127,7 @@ void impwrite(string word, int syllables, int type, string rhyme,
         // Use vector.insert to insert a line at the appropriate position
         line_comp.insert(iter8 + dictionary_num, syllables - j, "\n")
 
-        // Don't forget to change j!
+        // Don't forget to change the number of syllables in the header!
         // I think I might have miscounted with the inserts below. Check!
         string line = line_comp[dictionary_num];
         line.erase(line.find('#')+2, 1);
@@ -135,10 +146,10 @@ void impwrite(string word, int syllables, int type, string rhyme,
     string line = line_comp[dictionary_num + syllables];
     int test = line.find_last_of(',');
     if (test < 0){
-        line.append(word);
+        line.append(word + "+" + type);
     }
     else{
-        line.append(', ' word); 
+        line.append(', ' + word + "+" + type); 
     }
 
     // Now to add it back to the line composition!
