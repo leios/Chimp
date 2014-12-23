@@ -351,7 +351,7 @@ double find_min_quality(vector<double> options){
 int make_selection(vector<double> options){
     double total_quality = 0, min_quality, total_qual_inv;
     int choice = 0;
-    double beta = 1;
+    double beta = 0.5;
     vector<double> bins;
 
     // sum all qualities via boltzmann thingy
