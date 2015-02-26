@@ -19,5 +19,3 @@ Oh, also... I run a youtube channel that will probably feature this when it is
 done. Be sure to check it out! 
 
 https://www.youtube.com/user/LeiosOS
-
-Also: This code's a little rough. Sorry.
