@@ -82,7 +82,7 @@ vector<string> read_headers(vector<string> line_comp){
 // Note: I may need to rewrite this to search each heder for the rhyming word. 
 //       More than that, I might want to read in words that do not necessarily
 //       have a rhyme (i.e. reading a book).
-void impwrite(string word, int syllables, int type, string rhyme, 
+vector<string> impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing){
 
@@ -92,7 +92,7 @@ void impwrite(string word, int syllables, int type, string rhyme,
     // Note: Not used to vector.insert command. I am sure there is a more
     // efficient way of doing this
     // Note: the header's vector should be just the rhymes. 
-    vector<int>::iterator iter8 = line_comp.begin();
+    vector<string>::iterator iter8 = line_comp.begin();
     for (int i = 0; i <= headers.size(); i++){
         if (rhyme == headers[i]){
             header_num = i;
@@ -102,7 +102,7 @@ void impwrite(string word, int syllables, int type, string rhyme,
         // Now let's add new headers if the rhyme has never been seen before
         if (i == headers.size()){
             string new_head;
-            new_head.append("#," + syllables + "," + rhyme);
+            new_head.append("#," + to_string(syllables) + "," + rhyme);
             headers.push_back(rhyme);
             line_comp.push_back(new_head);
             for (int j = 0; j < syllables; j++){
@@ -119,24 +119,21 @@ void impwrite(string word, int syllables, int type, string rhyme,
 
     // This should find the spacing in the header and set it as "j"
     // why "j"? Heck if I know, I couldn't think of another variable. 
-    space = line_comp[dictionary_num]
-            .substr(line_comp[dictionary_num].find('#')+2, 1);
-    j = atoi(space.c_str());
+    string space = line_comp[dictionary_num]
+                   .substr(line_comp[dictionary_num].find('#')+2, 1);
+    int j = atoi(space.c_str());
 
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
-        line_comp.insert(iter8 + dictionary_num, syllables - j, "\n")
+        line_comp.insert(iter8 + dictionary_num, syllables - j, "\n");
 
         // Don't forget to change the number of syllables in the header!
         // I think I might have miscounted with the inserts below. Check!
         string line = line_comp[dictionary_num];
-        line.erase(line.find('#')+2, 1);
-        line.insert(line.find('#')+2, syllables);
+        line_comp[dictionary_num].erase(line.find('#')+2, 1);
+        line_comp[dictionary_num].insert(line.find('#')+2,to_string(syllables));
         line_comp.erase(iter8 + dictionary_num); 
         line_comp.insert(iter8 + dictionary_num, line);
-    }
-    else{
-        continue;
     }
 
     // Now we need to locate the end of the line and add a comma, followed by
@@ -146,10 +143,10 @@ void impwrite(string word, int syllables, int type, string rhyme,
     string line = line_comp[dictionary_num + syllables];
     int test = line.find_last_of(',');
     if (test < 0){
-        line.append(word + "+" + type);
+        line.append(word + "+" + to_string(type));
     }
     else{
-        line.append(', ' + word + "+" + type); 
+        line.append(", " + word + "+" + to_string(type)); 
     }
 
     // Now to add it back to the line composition!
@@ -157,16 +154,16 @@ void impwrite(string word, int syllables, int type, string rhyme,
     line_comp.insert(iter8 + dictionary_num + syllables, line);
     
     // let's just return the vector for now.
-    return line_comp
+    return line_comp;
 }
 
-
+/*
 // This function records line_comp into a new file. I decided to separate this
 // from impwrite. I might combine them later.    
-void imprecord(vector<int> line_comp, const char* dic_path){
+vector<string> imprecord(vector<int> line_comp, const char* dic_path){
 
     // Now we need to write the new contents of line_comp to a file...
-    // I think we have dome this before, so let's scrounge something up!
+    // I think we have done this before, so let's scrounge something up!
     ofstream dic;
     dic.open(dic_path);
 
@@ -178,37 +175,37 @@ void imprecord(vector<int> line_comp, const char* dic_path){
 
 
 // If you end up making a mistake and need to remove a header
-vector<string> impremove_header(string rhyme, vector<string> line_comp
+vector<string> impremove_header(string rhyme, vector<string> line_comp,
                                 vector<string> headers, 
                                 vector<int> line_spacing){
 
     // This should be easy. A search and destroy mission.
     // We find the heading and remove it along with all the lines following
     // within syllable range.
+    int header_num;
     for (int i = 0; i <= headers.size(); i++){
         if (rhyme == headers[i]){
             header_num = i;
             break;
         }
+    }
 
-    line_spacing[header_num] = line_num;
+    int line_num = line_spacing[header_num];
 
     // find the space each header takes up
-    space = line_comp[line_num]
-            .substr(line_comp[line_num].find('#')+2, 1);
+    string space = line_comp[line_num]
+                   .substr(line_comp[line_num].find('#')+2, 1);
 
     // I couldn't think of a unique variable name for the number of syllables to
     // remove... so let's just use "j" for now. Deal with it.
-    j = atoi(space.c_str());
+    int j = atoi(space.c_str());
 
     // Now we just have to remove the appropriate components from the vector
     // I think I might be off by one. Check this.
     line_comp.erase(line_comp.begin() + header_num - 1, 
                     line_comp.begin() + header_num + j - 1);
-
 return line_comp;
 }
-
 
 // If you need to transfer the contents of one header to another
 vector<string> imptransfer(string rhyme1, string rhyme2,
@@ -228,3 +225,4 @@ return line_comp;
 // words. The output should be a vector or array of the appropriate length.
 void impread(){
 }
+*/

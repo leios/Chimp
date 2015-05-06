@@ -24,11 +24,11 @@ vector<int> find_spacing(vector<string> line_comp);
 
 vector<string> read_headers(vector<string> line_comp);
 
-void impwrite(string word, int syllables, int type, string rhyme, 
+vector<string> impwrite(string word, int syllables, int type, string rhyme, 
               vector<string> line_comp, vector<string> headers,
               vector<int> line_spacing);
 
-void imprecord(vector<string>line_comp, const char* dic_path);
+vector<string> imprecord(vector<string>line_comp, const char* dic_path);
 
 vector<string> impremove_header(string rhyme, vector<string> line_comp,
                                 vector<string> headers, 
