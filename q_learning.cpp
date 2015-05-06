@@ -247,7 +247,7 @@ int main(){
     output_words.open("phrasing.dat");
     
     // Alright. Now for the learning...
-    for (int k = 0; k < 100; k++){
+    for (int k = 0; k < 10; k++){
         for (int i = 0; i < max_syl; i++){
             for (int ii = 0; ii < words.size(); ii++){
                 options[ii] = quality[i][ii];

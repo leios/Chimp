@@ -8,7 +8,7 @@
 *-----------------------------------------------------------------------------*/
 
 Note: I can use this file format for easy serching in the future if I allow for
-      more than one "type" to be given to each word. I am not qute sure how to
+      more than one "type" to be given to each word. I am not quite sure how to
       do this. That said, I did upload a potential possibility in testdict.imp
 
 -I need to finish the impwrite / impremove command
@@ -45,3 +45,12 @@ Note: I can use this file format for easy serching in the future if I allow for
 
 -Note: Potentially use this as your final project in Adaptive systems. Teach a 
  chimp to rhyme. I don't know. Maybe there is some way to incorporate it.
+
+ Because of how this code works, all we need to do is figure out the 
+ possibilities vector by sifting through a few books and then using the code
+ to print out the appropriate lyrics / poems. 
+
+ This might go a bit far from the original premise of an infinite monkey poet. 
+ I want the most random, yet still grammatically accurate poems possible. 
+
+
