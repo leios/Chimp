@@ -17,6 +17,10 @@
 
 using namespace std;
 
+/*----------------------------------------------------------------------------//
+* READ / WRITE
+*-----------------------------------------------------------------------------*/
+
 // This funtion simply reads the dictionary into a vector
 vector<string> read_file(const char* dic_path){
     vector<string> line_comp;
@@ -37,7 +41,7 @@ vector<string> read_file(const char* dic_path){
 }
 
 // This function will write line_comp to your dictionary file
-void write_file(vector<string> line_comp, const char* dic_path){
+void imprecord(vector<string> line_comp, const char* dic_path){
     ofstream impfile;
     impfile.open(dic_path);
     for (int i = 0; i < line_comp.size(); i++){
@@ -92,25 +96,29 @@ vector<string> impwrite(string word, int syllables, int type, string rhyme,
     // Note: Not used to vector.insert command. I am sure there is a more
     // efficient way of doing this
     // Note: the header's vector should be just the rhymes. 
-    vector<string>::iterator iter8 = line_comp.begin();
-    for (int i = 0; i <= headers.size(); i++){
-        if (rhyme == headers[i]){
-            header_num = i;
-            break;
+    int headers_before = headers.size();
+    for (int i = 0; i <= headers_before; i++){
+        if (i < headers_before){
+            if (rhyme == headers[i]){
+                header_num = i;
+                break;
+            }
         }
  
         // Now let's add new headers if the rhyme has never been seen before
-        if (i == headers.size()){
-            string new_head;
-            new_head.append("#," + to_string(syllables) + "," + rhyme);
-            headers.push_back(rhyme);
+        else{
+            string new_head = "#,";
+            new_head.append(to_string(syllables+1) + "," + rhyme);
+            headers.push_back(new_head);
             line_comp.push_back(new_head);
             for (int j = 0; j < syllables; j++){
-                line_comp.push_back("\n");
+                line_comp.push_back("EMPTY");
             }
-            header_num = headers.size() + 1;
+            header_num = i;
         }
     }
+
+    // dictionary_num is the position of the chosen header in line_comp
     dictionary_num = line_spacing[header_num];
     
     // Now we need to go into the heading by using the syllables to navigate 
@@ -118,62 +126,56 @@ vector<string> impwrite(string word, int syllables, int type, string rhyme,
     // we need to create it! 
 
     // This should find the spacing in the header and set it as "j"
-    // why "j"? Heck if I know, I couldn't think of another variable. 
+    // Why "j"? Heck if I know, I couldn't think of another variable. 
     string space = line_comp[dictionary_num]
                    .substr(line_comp[dictionary_num].find('#')+2, 1);
-    int j = atoi(space.c_str());
+    int j = (atoi(space.c_str()) - 1);
+    cout << j << '\t' << "j" << endl;
 
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
-        line_comp.insert(iter8 + dictionary_num, syllables - j, "\n");
+        line_comp.insert(line_comp.begin() + dictionary_num + j + 1, 
+                         syllables - j,"EMPTY");
 
         // Don't forget to change the number of syllables in the header!
         // I think I might have miscounted with the inserts below. Check!
         string line = line_comp[dictionary_num];
         line_comp[dictionary_num].erase(line.find('#')+2, 1);
-        line_comp[dictionary_num].insert(line.find('#')+2,to_string(syllables));
-        line_comp.erase(iter8 + dictionary_num); 
-        line_comp.insert(iter8 + dictionary_num, line);
+        line_comp[dictionary_num].insert(line.find('#')+2,
+                                         to_string(syllables + 1));
     }
+
 
     // Now we need to locate the end of the line and add a comma, followed by
     // the word we are adding and a number for it's type of speech.
     // I think we should start writing the code for the numbers and letters in
     // the first heading.
     string line = line_comp[dictionary_num + syllables];
+
     int test = line.find_last_of(',');
+
+    cout << line << '\t' << test << '\t' << syllables << endl;
+    cout << word << endl;
+
     if (test < 0){
-        line.append(word + "+" + to_string(type));
+        line = word + "+" + to_string(type) + ",";
+        cout << line << endl;
     }
     else{
-        line.append(", " + word + "+" + to_string(type)); 
+        line.append(word + "+" + to_string(type) + ","); 
     }
 
     // Now to add it back to the line composition!
-    line_comp.erase(iter8 + dictionary_num + syllables);
-    line_comp.insert(iter8 + dictionary_num + syllables, line);
+
+    line_comp.erase(line_comp.begin() + dictionary_num + syllables);
+    line_comp.insert(line_comp.begin() + dictionary_num + syllables, line);
+
     
     // let's just return the vector for now.
     return line_comp;
 }
 
 /*
-// This function records line_comp into a new file. I decided to separate this
-// from impwrite. I might combine them later.    
-vector<string> imprecord(vector<int> line_comp, const char* dic_path){
-
-    // Now we need to write the new contents of line_comp to a file...
-    // I think we have done this before, so let's scrounge something up!
-    ofstream dic;
-    dic.open(dic_path);
-
-    // Now let's copy the contents of line_comp to the dic
-    copy(line_comp.begin(), line_comp.end(), 
-         ostream_iterator<string>(dic, "\n"));
-      
-}
-
-
 // If you end up making a mistake and need to remove a header
 vector<string> impremove_header(string rhyme, vector<string> line_comp,
                                 vector<string> headers, 
