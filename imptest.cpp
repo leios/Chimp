@@ -24,6 +24,10 @@ using namespace std;
 
 int main(){
 
+/*----------------------------------------------------------------------------//
+* IMPWRITE / IMPRECORD
+*-----------------------------------------------------------------------------*/
+
     // adding in a single syllable word
     vector<string> line_comp, headers;
     vector<int> spacing;
@@ -67,7 +71,7 @@ int main(){
     }
 
     cout << endl << endl;
-*/
+
 
     // adding in a 3 syllable word
     spacing = find_spacing(line_comp);
@@ -80,12 +84,31 @@ int main(){
     line_comp = impwrite("parpartay",3,0,"a",line_comp,headers,spacing);
     //imprecord(line_comp, "testdict.imp");
 
+*/
+
+/*----------------------------------------------------------------------------//
+* IMPREMOVE_HEADER
+*-----------------------------------------------------------------------------*/
+
+/*
+
+    // impremove_header
     cout << "The following is your dictionary:" << endl;
     for( int i = 0; i < line_comp.size(); i++){
         cout << line_comp[i] << endl;
     }
 
+    spacing = find_spacing(line_comp);
+    headers = read_headers(line_comp);
 
+    line_comp = impremove_header("a",line_comp,headers,spacing);
+
+    cout << "The following is your dictionary after removal:" << endl;
+    for( int i = 0; i < line_comp.size(); i++){
+        cout << line_comp[i] << endl;
+    }
+
+*/
 
     return 0;
 }

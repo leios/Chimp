@@ -72,12 +72,12 @@ vector<string> read_headers(vector<string> line_comp){
     string head;
     spacing = find_spacing(line_comp);
     for ( int j = 0; j < spacing.size() - 1; j++){
-        cout << spacing[j] << ", ";
+        // cout << spacing[j] << ", ";
         head = line_comp[spacing[j]].substr(
             line_comp[spacing[j]].find('#')+4,
             line_comp[spacing[j]].size() - line_comp[spacing[j]].find('#')+4);
         headers.push_back(head);}
-    cout << endl;
+    // cout << endl;
     return headers;
 }
 
@@ -130,7 +130,6 @@ vector<string> impwrite(string word, int syllables, int type, string rhyme,
     string space = line_comp[dictionary_num]
                    .substr(line_comp[dictionary_num].find('#')+2, 1);
     int j = (atoi(space.c_str()) - 1);
-    cout << j << '\t' << "j" << endl;
 
     if (syllables > j){
         // Use vector.insert to insert a line at the appropriate position
@@ -154,12 +153,8 @@ vector<string> impwrite(string word, int syllables, int type, string rhyme,
 
     int test = line.find_last_of(',');
 
-    cout << line << '\t' << test << '\t' << syllables << endl;
-    cout << word << endl;
-
     if (test < 0){
         line = word + "+" + to_string(type) + ",";
-        cout << line << endl;
     }
     else{
         line.append(word + "+" + to_string(type) + ","); 
@@ -175,7 +170,6 @@ vector<string> impwrite(string word, int syllables, int type, string rhyme,
     return line_comp;
 }
 
-/*
 // If you end up making a mistake and need to remove a header
 vector<string> impremove_header(string rhyme, vector<string> line_comp,
                                 vector<string> headers, 
@@ -192,6 +186,7 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp,
         }
     }
 
+
     int line_num = line_spacing[header_num];
 
     // find the space each header takes up
@@ -202,12 +197,16 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp,
     // remove... so let's just use "j" for now. Deal with it.
     int j = atoi(space.c_str());
 
+
     // Now we just have to remove the appropriate components from the vector
     // I think I might be off by one. Check this.
-    line_comp.erase(line_comp.begin() + header_num - 1, 
-                    line_comp.begin() + header_num + j - 1);
-return line_comp;
+    line_comp.erase(line_comp.begin() + line_num - 1, 
+                    line_comp.begin() + line_num + j - 1);
+
+    return line_comp;
 }
+
+/*
 
 // If you need to transfer the contents of one header to another
 vector<string> imptransfer(string rhyme1, string rhyme2,
