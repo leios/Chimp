@@ -207,6 +207,9 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp,
 }
 
 // If you need to transfer the contents of one header to another
+// NOTE: Tranferring 1 onto 2
+//       This follows logic of impwrite and impremove header, check there for
+//       comments!
 vector<string> imptransfer(string rhyme1, string rhyme2,
                            vector<string> line_comp, 
                            vector<string> headers, vector<int> line_spacing){
@@ -214,6 +217,55 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     // I think the best bet here is to use impwrite to write each syllable line
     // to the appropriate line in the header we want to transfer to and then 
     // use impremove_header to remove the offensive header. 
+
+    // Finding information on rhyme1
+    int header1_num;
+    for (int i = 0; i <= headers.size(); i++){
+        if (rhyme1 == headers[i]){
+            header_num = i;
+            break;
+        }
+    }
+
+    line1_num = line_spacing[header1_num];
+
+    string space1 = line_comp[line1_num]
+                    .substr(line_comp[line1_num].find('#')+2, 1);
+
+    int j1 = atoi(space1.c_str()];
+
+    // Finding information on rhyme2
+    int header2_num;
+    for (int i = 0; i <= headers.size(); i++){
+        if (rhyme2 == headers[i]){
+            header_num = i;
+            break;
+        }
+    }
+
+    line2_num = line_spacing[header2_num];
+
+    string space2 = line_comp[line2_num]
+                    .substr(line_comp[line2_num].find('#')+2, 1);
+
+    int j2 = atoi(space2.c_str()];
+
+    // We need to add extra rows if j1 > j2
+    if j1 > j2{
+        int jdiff = j1 - j2;
+        // Check to make sure this is inserting at the right position.
+        line_comp.insert(line_comp.begin() + line2_num + j2 - 1, jdiff,
+                         "EMPTY");
+    }
+
+    // Now, we just need to copy the contents of rhyme1 to rhyme2...
+    // again, check these to make sure it is aligned properly.
+    for (int i = 0; i < (j1 - 1); i++){
+        line_comp[line2_num + 1 + i].append(line_comp[line1_num + 1 + i]);
+    }
+
+   line_comp = impremove_header(rhyme1,line_comp,headers,line_spacing); 
+
 
 return line_comp;
 }
