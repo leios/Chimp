@@ -206,8 +206,6 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp,
     return line_comp;
 }
 
-/*
-
 // If you need to transfer the contents of one header to another
 vector<string> imptransfer(string rhyme1, string rhyme2,
                            vector<string> line_comp, 
@@ -215,10 +213,12 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
 
     // I think the best bet here is to use impwrite to write each syllable line
     // to the appropriate line in the header we want to transfer to and then 
-    // use impremove to remove the offensive header. 
+    // use impremove_header to remove the offensive header. 
 
 return line_comp;
 }
+
+/*
 
 // Note: There is / was a "dictionary" reading option. impread will
 // replace this function. Also: the purpose of impread is to find a full list of
