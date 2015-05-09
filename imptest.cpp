@@ -37,6 +37,7 @@ int main(){
         cout << line_comp[i] << endl;
     }
     spacing = find_spacing(line_comp);
+
     headers = read_headers(line_comp);
     cout << "The following are your heading titles:" << endl;
     for ( int i = 0; i < headers.size(); i++){

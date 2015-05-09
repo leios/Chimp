@@ -14,6 +14,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <iterator>
+#include "impff.h"
 
 using namespace std;
 
@@ -270,12 +271,111 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
 return line_comp;
 }
 
-/*
 
 // Note: There is / was a "dictionary" reading option. impread will
 // replace this function. Also: the purpose of impread is to find a full list of
 // possible words for Chimp to pull from when randomly generating letters or 
 // words. The output should be a vector or array of the appropriate length.
-void impread(){
+vector<word> impread(string rhyme, int syllables, int type,
+                       vector <string> line_comp, vector<string> headers,
+                       vector<int> line_spacing){
+
+    vector<word> possibilities;
+    word element;
+    // Following the logic of impwrite, we need to find the line number of the
+    // rhyme for the word. Note that not all words will have a rhyme.
+    if (rhyme != "NONE"){
+
+        int header_num;
+        for (int i = 0; i <= headers.size(); i++){
+            if (rhyme == headers[i]){
+                header_num = i;
+                break;
+            }
+        }
+
+        int line_num = line_spacing[header_num];
+
+        // Now we need to sort by syllables and type. Note that type will be
+        // (-1) if no type is specified.
+
+        string line = line_comp[line_num + syllables];
+        int comma,plus;
+        while (line.size() > 1){
+            element.rhyme = rhyme;
+
+            comma = line.find(",");
+            plus = line.find("+");
+            element.id = line.substr(0,plus);
+            element.type = atoi((line.substr(plus + 1,comma)).c_str());
+
+
+            // Filter by type
+            if (type < 0){
+                possibilities.push_back(element);
+            }
+            else{
+                if (element.type == type){
+                    possibilities.push_back(element);
+                }
+            }
+
+            line = line.substr(comma+1,line.size() - comma);
+        }
+
+    }
+
+    // Now we need to go through the rest of line_comp (no rhyme).
+    else{
+
+        // We need to go through and create a vector of lines, each with the
+        // appropriate number of syllables. Note that any number of syllables
+        // under the syllable number required is also possible.
+
+        vector <string> lines;
+        int count = 1,ieff = 1;
+        for (int i = 0; i < line_comp.size(); i++){
+
+            if (ieff <= syllables){
+                lines.push_back(line_comp[i]);
+            }
+
+            ieff += 1;
+
+            if (ieff > line_spacing[count]){
+                ieff -= line_spacing[count];
+                count += 1;
+            }
+        }
+
+
+        int comma,plus;
+        for (int i = 0; i < lines.size(); i++){
+
+            while (lines[i].size() > 1){
+                element.rhyme = rhyme;
+
+                comma = lines[i].find(",");
+                plus = lines[i].find("+");
+                element.id = lines[i].substr(0,plus);
+                element.type = atoi((lines[i].substr(plus + 1,comma)).c_str());
+
+
+                // Filter by type
+                if (type < 0){
+                    possibilities.push_back(element);
+                }
+                else{
+                    if (element.type == type){
+                        possibilities.push_back(element);
+                    }
+                }
+
+                lines[i] = lines[i].substr(comma+1,lines[i].size() - comma);
+            }
+
+        }
+    }
+
+    return possibilities;
 }
-*/

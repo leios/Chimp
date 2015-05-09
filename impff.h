@@ -16,6 +16,11 @@
 
 using namespace std;
 
+struct word{
+    string id,rhyme;
+    int type;
+};
+
 vector<string> read_file(const char* dic_path);
 
 void imprecord(vector<string> line_comp, const char* dic_path);
@@ -36,6 +41,10 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
                            vector<string> line_comp, 
                            vector<string> headers, vector<int> line_spacing);
 
-void impread();
+// Returns a vector of words so we can easily find the rhyme header for the next
+// line. It's better this way.
+vector<word> impread(string rhyme, int syllables, int type,
+                       vector <string> line_comp, vector<string> headers,
+                       vector<int> line_spacing);
 
 #endif
