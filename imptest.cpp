@@ -54,7 +54,6 @@ int main(){
     cout << endl << endl;
 
     // adding in a two syllable word 
-/*
     spacing = find_spacing(line_comp);
     headers = read_headers(line_comp);
     cout << "The following are your heading titles:" << endl;
@@ -84,14 +83,10 @@ int main(){
     line_comp = impwrite("parpartay",3,0,"a",line_comp,headers,spacing);
     //imprecord(line_comp, "testdict.imp");
 
-*/
-
 /*----------------------------------------------------------------------------//
 * IMPREMOVE_HEADER
 *-----------------------------------------------------------------------------*/
-
 /*
-
     // impremove_header
     cout << "The following is your dictionary:" << endl;
     for( int i = 0; i < line_comp.size(); i++){
@@ -107,8 +102,20 @@ int main(){
     for( int i = 0; i < line_comp.size(); i++){
         cout << line_comp[i] << endl;
     }
-
 */
+/*----------------------------------------------------------------------------//
+* IMPTRANSFER
+*-----------------------------------------------------------------------------*/
+
+    spacing = find_spacing(line_comp);
+    headers = read_headers(line_comp);
+
+    line_comp = imptransfer("a","header",line_comp,headers,spacing);
+
+    cout << "The following is your dictionary after transfer:" << endl;
+    for( int i = 0; i < line_comp.size(); i++){
+        cout << line_comp[i] << endl;
+    }
 
     return 0;
 }

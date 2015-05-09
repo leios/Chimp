@@ -200,8 +200,8 @@ vector<string> impremove_header(string rhyme, vector<string> line_comp,
 
     // Now we just have to remove the appropriate components from the vector
     // I think I might be off by one. Check this.
-    line_comp.erase(line_comp.begin() + line_num - 1, 
-                    line_comp.begin() + line_num + j - 1);
+    line_comp.erase(line_comp.begin() + line_num, 
+                    line_comp.begin() + line_num + j);
 
     return line_comp;
 }
@@ -219,10 +219,10 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     // use impremove_header to remove the offensive header. 
 
     // Finding information on rhyme1
-    int header1_num;
+    int header1_num, line1_num;
     for (int i = 0; i <= headers.size(); i++){
         if (rhyme1 == headers[i]){
-            header_num = i;
+            header1_num = i;
             break;
         }
     }
@@ -232,13 +232,13 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     string space1 = line_comp[line1_num]
                     .substr(line_comp[line1_num].find('#')+2, 1);
 
-    int j1 = atoi(space1.c_str()];
+    int j1 = atoi(space1.c_str());
 
     // Finding information on rhyme2
-    int header2_num;
+    int header2_num, line2_num;
     for (int i = 0; i <= headers.size(); i++){
         if (rhyme2 == headers[i]){
-            header_num = i;
+            header2_num = i;
             break;
         }
     }
@@ -248,10 +248,10 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     string space2 = line_comp[line2_num]
                     .substr(line_comp[line2_num].find('#')+2, 1);
 
-    int j2 = atoi(space2.c_str()];
+    int j2 = atoi(space2.c_str());
 
     // We need to add extra rows if j1 > j2
-    if j1 > j2{
+    if (j1 > j2){
         int jdiff = j1 - j2;
         // Check to make sure this is inserting at the right position.
         line_comp.insert(line_comp.begin() + line2_num + j2 - 1, jdiff,
@@ -261,7 +261,7 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     // Now, we just need to copy the contents of rhyme1 to rhyme2...
     // again, check these to make sure it is aligned properly.
     for (int i = 0; i < (j1 - 1); i++){
-        line_comp[line2_num + 1 + i].append(line_comp[line1_num + 1 + i]);
+        line_comp[line2_num + 1 + i].append("," + line_comp[line1_num + 1 + i]);
     }
 
    line_comp = impremove_header(rhyme1,line_comp,headers,line_spacing); 
