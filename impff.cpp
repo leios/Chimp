@@ -262,7 +262,7 @@ vector<string> imptransfer(string rhyme1, string rhyme2,
     // Now, we just need to copy the contents of rhyme1 to rhyme2...
     // again, check these to make sure it is aligned properly.
     for (int i = 0; i < (j1 - 1); i++){
-        line_comp[line2_num + 1 + i].append("," + line_comp[line1_num + 1 + i]);
+        line_comp[line2_num + 1 + i].append(line_comp[line1_num + 1 + i]);
     }
 
    line_comp = impremove_header(rhyme1,line_comp,headers,line_spacing); 
@@ -281,6 +281,7 @@ vector<word> impread(string rhyme, int syllables, int type,
                        vector<int> line_spacing){
 
     vector<word> possibilities;
+    vector <string> lines;
     word element;
     // Following the logic of impwrite, we need to find the line number of the
     // rhyme for the word. Note that not all words will have a rhyme.
@@ -299,16 +300,44 @@ vector<word> impread(string rhyme, int syllables, int type,
         // Now we need to sort by syllables and type. Note that type will be
         // (-1) if no type is specified.
 
-        string line = line_comp[line_num + syllables];
-        int comma,plus;
-        while (line.size() > 1){
+        for (int i = line_num + 1; i < line_spacing[header_num + 1]; i++){
+            lines.push_back(line_comp[i]);
+        }
+    }
+
+    // Now we need to go through the rest of line_comp (no rhyme).
+    else{
+
+        // We need to go through and create a vector of lines, each with the
+        // appropriate number of syllables. Note that any number of syllables
+        // under the syllable number required is also possible.
+
+        int count = 1,ieff = 1;
+        for (int i = 1; i < line_comp.size(); i++){
+
+            if (ieff <= syllables){
+                lines.push_back(line_comp[i]);
+            }
+
+            ieff += 1;
+
+            if (ieff > (line_spacing[count] - line_spacing[count - 1])){
+                ieff -= (line_spacing[count] - line_spacing[count - 1]) ;
+                count += 1;
+            }
+        }
+
+    }
+
+    int comma,plus;
+    for (int i = 0; i < lines.size(); i++){
+        while (lines[i].size() > 1){
             element.rhyme = rhyme;
 
-            comma = line.find(",");
-            plus = line.find("+");
-            element.id = line.substr(0,plus);
-            element.type = atoi((line.substr(plus + 1,comma)).c_str());
-
+            comma = lines[i].find(",");
+            plus = lines[i].find("+");
+            element.id = lines[i].substr(0,plus);
+            element.type = atoi((lines[i].substr(plus + 1,comma)).c_str());
 
             // Filter by type
             if (type < 0){
@@ -320,60 +349,8 @@ vector<word> impread(string rhyme, int syllables, int type,
                 }
             }
 
-            line = line.substr(comma+1,line.size() - comma);
-        }
-
-    }
-
-    // Now we need to go through the rest of line_comp (no rhyme).
-    else{
-
-        // We need to go through and create a vector of lines, each with the
-        // appropriate number of syllables. Note that any number of syllables
-        // under the syllable number required is also possible.
-
-        vector <string> lines;
-        int count = 1,ieff = 1;
-        for (int i = 0; i < line_comp.size(); i++){
-
-            if (ieff <= syllables){
-                lines.push_back(line_comp[i]);
-            }
-
-            ieff += 1;
-
-            if (ieff > line_spacing[count]){
-                ieff -= line_spacing[count];
-                count += 1;
-            }
-        }
-
-
-        int comma,plus;
-        for (int i = 0; i < lines.size(); i++){
-
-            while (lines[i].size() > 1){
-                element.rhyme = rhyme;
-
-                comma = lines[i].find(",");
-                plus = lines[i].find("+");
-                element.id = lines[i].substr(0,plus);
-                element.type = atoi((lines[i].substr(plus + 1,comma)).c_str());
-
-
-                // Filter by type
-                if (type < 0){
-                    possibilities.push_back(element);
-                }
-                else{
-                    if (element.type == type){
-                        possibilities.push_back(element);
-                    }
-                }
-
-                lines[i] = lines[i].substr(comma+1,lines[i].size() - comma);
-            }
-
+            lines[i] = lines[i].substr(comma+1,lines[i].size() - comma);
+            cout << lines[i] << endl;
         }
     }
 

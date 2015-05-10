@@ -118,5 +118,18 @@ int main(){
         cout << line_comp[i] << endl;
     }
 
+/*----------------------------------------------------------------------------//
+* IMPREAD
+*-----------------------------------------------------------------------------*/
+    spacing = find_spacing(line_comp);
+    headers = read_headers(line_comp);
+
+    cout << endl << endl;
+    vector <word> possibilities = impread("NONE",3,-1,line_comp,
+                                          headers,spacing);
+
+    for (int i = 0; i < possibilities.size(); i++){
+        cout << possibilities[i].id << endl;
+    }
     return 0;
 }
