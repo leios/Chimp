@@ -356,3 +356,29 @@ vector<word> impread(string rhyme, int syllables, int type,
 
     return possibilities;
 }
+
+
+// This function will read in an input text file and ask the user to define
+// the word if it is not already in the dictionary.
+void bookread(const char* text){
+
+    string line;
+    ifstream book;
+    book.open(text);
+    if (!book){
+        cout << "incorrect filepath. Please input the appropriate imp file." 
+        << endl;
+    }
+
+    while(book >> line){
+        while (line.size() > 1){
+            // Now, I have a bit of a problem here.
+            // A book has oodles of words that are not compatable with impfiles
+            // We are going to have to read in each book and remove punctuation
+            // and capitalizations. Bleh. 
+        }
+    }
+
+    book.close();
+    
+}

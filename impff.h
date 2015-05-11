@@ -47,4 +47,6 @@ vector<word> impread(string rhyme, int syllables, int type,
                        vector <string> line_comp, vector<string> headers,
                        vector<int> line_spacing);
 
+void bookread(const char* text);
+
 #endif
